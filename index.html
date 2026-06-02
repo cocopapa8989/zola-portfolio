@@ -186,6 +186,50 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- 專案 6：啤酒節 -->
+                <div class="group bg-brand-card rounded-2xl border border-brand-dark/5 overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-accent/20 transition-all duration-300 flex flex-col cursor-pointer" onclick="openProject('beer')">
+                    <div class="h-56 bg-slate-900 relative flex items-center justify-center overflow-hidden">
+                        <img src="https://i.meee.com.tw/DAborF6.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="啤酒節">
+                        <div class="absolute top-4 right-4 px-3 py-1 bg-brand-dark/80 backdrop-blur-md text-white rounded-lg text-xs font-semibold">
+                            SLOT 滾輪遊戲
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-3 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold group-hover:text-brand-accent transition-colors">啤酒節 - 精緻 2D 老虎機</h3>
+                            <p class="text-brand-muted text-sm line-clamp-2 mt-1">
+                                以熱鬧的德國啤酒節慶典為主題，主打歡樂的暢飲氛圍、特色高達 243 條對獎路徑以及動態免費旋轉玩法設計。
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-brand-dark/5 text-xs text-brand-muted font-semibold">
+                            <span>2D原畫設計 • 介面排版 • 規格輸出</span>
+                            <span class="group-hover:translate-x-1 transition-transform text-brand-accent font-bold">查看作品牆 ➔</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 專案 7：瘋狂聖誕 -->
+                <div class="group bg-brand-card rounded-2xl border border-brand-dark/5 overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-accent/20 transition-all duration-300 flex flex-col cursor-pointer" onclick="openProject('christmas')">
+                    <div class="h-56 bg-slate-900 relative flex items-center justify-center overflow-hidden">
+                        <img src="https://i.meee.com.tw/Kymj28W.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="瘋狂聖誕">
+                        <div class="absolute top-4 right-4 px-3 py-1 bg-brand-dark/80 backdrop-blur-md text-white rounded-lg text-xs font-semibold">
+                            SLOT 滾輪遊戲
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-3 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold group-hover:text-brand-accent transition-colors">瘋狂聖誕 - 精緻 2D 老虎機</h3>
+                            <p class="text-brand-muted text-sm line-clamp-2 mt-1">
+                                融合聖誕老人的驚喜送禮、冰雪麋鹿與璀璨聖誕樹等經典元素。採用經典的 3x5 滾輪與繽紛 30 線中獎方式。
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-brand-dark/5 text-xs text-brand-muted font-semibold">
+                            <span>2D原畫設計 • 介面排版 • 規格輸出</span>
+                            <span class="group-hover:translate-x-1 transition-transform text-brand-accent font-bold">查看作品牆 ➔</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -534,6 +578,52 @@
                     </div>
                 </div>
 
+                <!-- ==================== 啤酒節作品展示區 ==================== -->
+                <div id="detail-beer" class="hidden space-y-8">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-brand-dark/5">
+                        <div class="space-y-2">
+                            <span class="px-2.5 py-1 bg-amber-500/10 text-amber-600 text-xs font-semibold rounded-lg uppercase">Slots 老虎機專案</span>
+                            <h2 class="text-3xl md:text-5xl font-black tracking-tight">啤酒節 <span class="text-brand-accent">Oktoberfest</span></h2>
+                        </div>
+                        <div class="bg-amber-50 border border-amber-200/50 p-4 rounded-xl max-w-md text-xs text-amber-900 leading-relaxed">
+                            <strong>💡 核心玩法規則一覽：</strong>
+                            <p class="mt-1">
+                                經典 3x5 轉輪，搭載特色 243 路（243 Ways）對獎機制。任意相鄰相同圖騰達 3 個以上即中獎。中獎消去並由上方掉落新牌。集滿 3 個以上啤酒 Scatters 即可觸發 Free Spins 免費遊戲！
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-sm tracking-wider text-brand-dark">設計手稿與介面展示 GRID CASE STUDY</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" id="beer-grid-container">
+                            <!-- JS將會自動生成 15 張高品質縮圖卡片 -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== 瘋狂聖誕作品展示區 ==================== -->
+                <div id="detail-christmas" class="hidden space-y-8">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-brand-dark/5">
+                        <div class="space-y-2">
+                            <span class="px-2.5 py-1 bg-red-500/10 text-red-600 text-xs font-semibold rounded-lg uppercase">Slots 老虎機專案</span>
+                            <h2 class="text-3xl md:text-5xl font-black tracking-tight">瘋狂聖誕 <span class="text-brand-accent">Crazy Christmas</span></h2>
+                        </div>
+                        <div class="bg-amber-50 border border-amber-200/50 p-4 rounded-xl max-w-md text-xs text-amber-900 leading-relaxed">
+                            <strong>💡 核心玩法規則一覽：</strong>
+                            <p class="mt-1">
+                                具有 3x5 轉輪、對獎規則為 30 線（30 Lines）方式之 Slot 遊戲。當轉輪停止轉動後，若畫面中出現 3、4 或 5 個以上相同之圖騰達成連線條件，即為中獎並獲取豐厚彩金回報！
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-sm tracking-wider text-brand-dark">設計手稿與介面展示 GRID CASE STUDY</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" id="christmas-grid-container">
+                            <!-- JS將會自動生成 14 張高品質縮圖卡片 -->
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -659,12 +749,50 @@
             { src: "https://i.meee.com.tw/VJphtVl.jpg", title: "18 | Character" }
         ];
 
-        let currentProjectType = 'polar'; // 'polar'、'mahjong'、'wushuang'、'rainbow'、'zeus'
+        // 啤酒節圖片庫 (15張)
+        const beerImages = [
+            { src: "https://i.meee.com.tw/G8I7Rss.jpg", title: "01 | Loading" },
+            { src: "https://i.meee.com.tw/DI5sFLl.jpg", title: "02 | Title Screen" },
+            { src: "https://i.meee.com.tw/DAborF6.jpg", title: "03 | Base Game" },
+            { src: "https://i.meee.com.tw/4XrYpuV.jpg", title: "04 | Base Game" },
+            { src: "https://i.meee.com.tw/9XEtSt6.jpg", title: "05 | Free Spins Game" },
+            { src: "https://i.meee.com.tw/H41CCKJ.jpg", title: "06 | Popup" },
+            { src: "https://i.meee.com.tw/tiGheTg.jpg", title: "07 | Popup" },
+            { src: "https://i.meee.com.tw/qAZ1tJq.jpg", title: "08 | Odss" },
+            { src: "https://i.meee.com.tw/GyAVJoz.jpg", title: "09 | Win Display" },
+            { src: "https://i.meee.com.tw/SrtaM2e.jpg", title: "10 | Big Win" },
+            { src: "https://i.meee.com.tw/57SlHHc.jpg", title: "11 | Mega Win" },
+            { src: "https://i.meee.com.tw/mXSvQ2J.jpg", title: "12 | Super Win" },
+            { src: "https://i.meee.com.tw/p6dqWiD.jpg", title: "13 | BG" },
+            { src: "https://i.meee.com.tw/u7RmFb8.jpg", title: "14 | Character" },
+            { src: "https://i.meee.com.tw/72zugnL.jpg", title: "15 | Character" }
+        ];
+
+        // 瘋狂聖誕圖片庫 (14張)
+        const christmasImages = [
+            { src: "https://i.meee.com.tw/BJP1IG5.jpg", title: "01 | Loading" },
+            { src: "https://i.meee.com.tw/FMwKlE6.jpg", title: "02 | Title Screen" },
+            { src: "https://i.meee.com.tw/Kymj28W.jpg", title: "03 | Base Game" },
+            { src: "https://i.meee.com.tw/GGDySHt.jpg", title: "04 | Base Game" },
+            { src: "https://i.meee.com.tw/NypF4uZ.jpg", title: "05 | Free Spins Game" },
+            { src: "https://i.meee.com.tw/89EEH79.jpg", title: "06 | Popup" },
+            { src: "https://i.meee.com.tw/DGbVqiS.jpg", title: "07 | Popup" },
+            { src: "https://i.meee.com.tw/RCnCF9a.jpg", title: "08 | Odss" },
+            { src: "https://i.meee.com.tw/xlAv06B.jpg", title: "09 | Big Win" },
+            { src: "https://i.meee.com.tw/kvRIAr4.jpg", title: "10 | Mega Win" },
+            { src: "https://i.meee.com.tw/nmdJW2x.jpg", title: "11 | Super Win" },
+            { src: "https://i.meee.com.tw/dEFD9wJ.jpg", title: "12 | BG" },
+            { src: "https://i.meee.com.tw/qwwjppQ.jpg", title: "13 | FG" },
+            { src: "https://i.meee.com.tw/uuje92e.jpg", title: "14 | Character" }
+        ];
+
+        let currentProjectType = 'polar'; // polar, mahjong, wushuang, rainbow, zeus, beer, christmas
         let currentImgIndex = 0;
 
         // 初始化極地九宮格縮圖
         function initPolarGrid() {
             const grid = document.getElementById('polar-grid-container');
+            if(!grid) return;
             grid.innerHTML = ''; 
 
             polarImages.forEach((img, index) => {
@@ -687,6 +815,7 @@
         // 初始化麻將九宮格縮圖
         function initMahjongGrid() {
             const grid = document.getElementById('mahjong-grid-container');
+            if(!grid) return;
             grid.innerHTML = '';
 
             mahjongImages.forEach((img, index) => {
@@ -708,6 +837,7 @@
         // 初始化麻將無雙2九宮格縮圖
         function initWushuangGrid() {
             const grid = document.getElementById('wushuang-grid-container');
+            if(!grid) return;
             grid.innerHTML = '';
 
             wushuangImages.forEach((img, index) => {
@@ -729,6 +859,7 @@
         // 初始化金色彩虹九宮格縮圖
         function initRainbowGrid() {
             const grid = document.getElementById('rainbow-grid-container');
+            if(!grid) return;
             grid.innerHTML = '';
 
             rainbowImages.forEach((img, index) => {
@@ -750,12 +881,57 @@
         // 初始化雷霆宙斯九宮格縮圖
         function initZeusGrid() {
             const grid = document.getElementById('zeus-grid-container');
+            if(!grid) return;
             grid.innerHTML = '';
 
             zeusImages.forEach((img, index) => {
                 const card = document.createElement('div');
                 card.className = "group relative bg-brand-card rounded-xl border border-brand-dark/5 overflow-hidden shadow-sm hover:shadow-md hover:border-brand-accent/20 transition-all duration-300 cursor-pointer aspect-[3/4]";
                 card.setAttribute('onclick', `openLightbox('zeus', ${index})`);
+                card.innerHTML = `
+                    <div class="w-full h-full relative overflow-hidden bg-brand-dark/5">
+                        <img src="${img.src}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="${img.title}" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/0 to-brand-dark/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                            <span class="text-white text-xs font-bold tracking-wider">${img.title}</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // 初始化啤酒節九宮格縮圖
+        function initBeerGrid() {
+            const grid = document.getElementById('beer-grid-container');
+            if(!grid) return;
+            grid.innerHTML = '';
+
+            beerImages.forEach((img, index) => {
+                const card = document.createElement('div');
+                card.className = "group relative bg-brand-card rounded-xl border border-brand-dark/5 overflow-hidden shadow-sm hover:shadow-md hover:border-brand-accent/20 transition-all duration-300 cursor-pointer aspect-[3/4]";
+                card.setAttribute('onclick', `openLightbox('beer', ${index})`);
+                card.innerHTML = `
+                    <div class="w-full h-full relative overflow-hidden bg-brand-dark/5">
+                        <img src="${img.src}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="${img.title}" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/0 to-brand-dark/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                            <span class="text-white text-xs font-bold tracking-wider">${img.title}</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // 初始化瘋狂聖誕九宮格縮圖
+        function initChristmasGrid() {
+            const grid = document.getElementById('christmas-grid-container');
+            if(!grid) return;
+            grid.innerHTML = '';
+
+            christmasImages.forEach((img, index) => {
+                const card = document.createElement('div');
+                card.className = "group relative bg-brand-card rounded-xl border border-brand-dark/5 overflow-hidden shadow-sm hover:shadow-md hover:border-brand-accent/20 transition-all duration-300 cursor-pointer aspect-[3/4]";
+                card.setAttribute('onclick', `openLightbox('christmas', ${index})`);
                 card.innerHTML = `
                     <div class="w-full h-full relative overflow-hidden bg-brand-dark/5">
                         <img src="${img.src}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="${img.title}" loading="lazy">
@@ -775,6 +951,8 @@
             initWushuangGrid();
             initRainbowGrid();
             initZeusGrid();
+            initBeerGrid();
+            initChristmasGrid();
         });
 
         // 切換主頁面 Section (Work / About)
@@ -802,17 +980,22 @@
         function openProject(projectId) {
             const modal = document.getElementById('project-modal');
             const container = document.getElementById('modal-container');
+            
             const detailPolar = document.getElementById('detail-polar');
             const detailMahjong = document.getElementById('detail-mahjong');
             const detailWushuang = document.getElementById('detail-wushuang');
             const detailRainbow = document.getElementById('detail-rainbow');
             const detailZeus = document.getElementById('detail-zeus');
+            const detailBeer = document.getElementById('detail-beer');
+            const detailChristmas = document.getElementById('detail-christmas');
 
             detailPolar.classList.add('hidden');
             detailMahjong.classList.add('hidden');
             detailWushuang.classList.add('hidden');
             detailRainbow.classList.add('hidden');
             detailZeus.classList.add('hidden');
+            detailBeer.classList.add('hidden');
+            detailChristmas.classList.add('hidden');
 
             if (projectId === 'polar') {
                 detailPolar.classList.remove('hidden');
@@ -824,6 +1007,10 @@
                 detailRainbow.classList.remove('hidden');
             } else if (projectId === 'zeus') {
                 detailZeus.classList.remove('hidden');
+            } else if (projectId === 'beer') {
+                detailBeer.classList.remove('hidden');
+            } else if (projectId === 'christmas') {
+                detailChristmas.classList.remove('hidden');
             }
 
             modal.classList.remove('hidden');
@@ -884,8 +1071,12 @@
                 return wushuangImages;
             } else if (currentProjectType === 'rainbow') {
                 return rainbowImages;
-            } else {
+            } else if (currentProjectType === 'zeus') {
                 return zeusImages;
+            } else if (currentProjectType === 'beer') {
+                return beerImages;
+            } else {
+                return christmasImages;
             }
         }
 
