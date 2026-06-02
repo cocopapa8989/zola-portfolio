@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uniq Studio | 2D博弈遊戲視覺設計 & 原畫作品集</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#FAF9F5', // 溫暖米白底色
+                            dark: '#1C1C1C', // 質感深黑
+                            accent: '#E55B5B', // 復古珊瑚紅
+                            muted: '#71717A', // 灰色
+                            card: '#FFFFFF' // 卡片純白
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* 隱藏滾動條但保持功能 */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-brand-dark min-h-screen font-sans antialiased transition-colors duration-300">
+
+    <!-- 導覽列 -->
+    <header class="sticky top-0 z-40 bg-brand-bg/90 backdrop-blur-md border-b border-brand-dark/5 px-6 py-4 md:px-12">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <!-- Logo / 品牌名 -->
+            <a href="#" onclick="showSection('work')" class="group flex items-center gap-2">
+                <span class="w-8 h-8 rounded-full bg-brand-accent flex items-center justify-center text-white font-bold text-sm group-hover:scale-105 transition-transform">U</span>
+                <span class="font-extrabold tracking-wider text-xl uppercase group-hover:text-brand-accent transition-colors">UNIQ STUDIO</span>
+            </a>
+            
+            <!-- 導覽選單 -->
+            <nav class="flex items-center gap-6 md:gap-8 font-medium text-sm md:text-base">
+                <button onclick="showSection('work')" id="nav-work" class="nav-btn text-brand-accent border-b-2 border-brand-accent pb-1">精選作品</button>
+                <button onclick="showSection('about')" id="nav-about" class="nav-btn text-brand-muted hover:text-brand-dark pb-1 transition-colors">個人履歷</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主內容區 -->
+    <main class="max-w-6xl mx-auto px-6 py-12 md:px-12">
+
+        <!-- ==================== 1. 精選作品 (WORK) ==================== -->
+        <section id="section-work" class="space-y-16">
+            <!-- 英雄看板 -->
+            <div class="space-y-6 max-w-3xl">
+                <div class="inline-block px-3 py-1 bg-brand-accent/10 text-brand-accent rounded-full text-xs font-semibold tracking-wider uppercase">
+                    Portfolio 2026
+                </div>
+                <h1 class="text-4xl md:text-6xl font-black tracking-tight leading-none text-brand-dark uppercase">
+                    2D GAMING ART <br class="hidden md:inline">
+                    <span class="text-brand-accent">DESIGN & PORTFOLIO</span>
+                </h1>
+                <p class="text-base md:text-lg text-brand-muted leading-relaxed">
+                    專注於高端博弈遊戲、棋牌娛樂城、Slots 老虎機的 2D 視覺包裝、原畫與介面設計。以精緻、極簡的框架包裝高飽和、充滿張力的遊戲視覺，創造極致的使用者沉浸體驗。
+                </p>
+            </div>
+
+            <!-- 作品網格 (博弈專案) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-6">
+                <!-- 專案 1：極地探險 -->
+                <div class="group bg-brand-card rounded-2xl border border-brand-dark/5 overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-accent/20 transition-all duration-300 flex flex-col cursor-pointer" onclick="openProject('polar')">
+                    <div class="h-56 bg-slate-900 relative flex items-center justify-center overflow-hidden">
+                        <img src="https://i.meee.com.tw/9LgryBS.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="極地探險">
+                        <div class="absolute top-4 right-4 px-3 py-1 bg-brand-dark/80 backdrop-blur-md text-white rounded-lg text-xs font-semibold">
+                            SLOT 滾輪遊戲
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-3 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold group-hover:text-brand-accent transition-colors">極地探險 - 精緻 2D 老虎機</h3>
+                            <p class="text-brand-muted text-sm line-clamp-2 mt-1">
+                                以極地冰川冒險為背景，主打高階 2D 手繪原畫、擬真質感 UI、特色大獎及免費遊戲玩法設計。
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-brand-dark/5 text-xs text-brand-muted font-semibold">
+                            <span>2D原畫設計 • 介面排版 • 規格輸出</span>
+                            <span class="group-hover:translate-x-1 transition-transform text-brand-accent font-bold">查看作品牆 ➔</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 專案 2：東風麻將 -->
+                <div class="group bg-brand-card rounded-2xl border border-brand-dark/5 overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-accent/20 transition-all duration-300 flex flex-col cursor-pointer" onclick="openProject('mahjong')">
+                    <div class="h-56 bg-slate-900 relative flex items-center justify-center overflow-hidden">
+                        <img src="https://i.meee.com.tw/vfBKlT8.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="東風麻將">
+                        <div class="absolute top-4 right-4 px-3 py-1 bg-brand-dark/80 backdrop-blur-md text-white rounded-lg text-xs font-semibold">
+                            SLOT 滾輪遊戲
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-3 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold group-hover:text-brand-accent transition-colors">東風麻將 - 精緻 2D 老虎機</h3>
+                            <p class="text-brand-muted text-sm line-clamp-2 mt-1">
+                                專為全球華人玩家設計的極簡風格 1024Way 麻將。主打金框麻將百搭轉化、特色風位骰追加乘倍獎勵與免費遊戲功能。
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-brand-dark/5 text-xs text-brand-muted font-semibold">
+                            <span>2D原畫設計 • 介面排版 • 規格輸出</span>
+                            <span class="group-hover:translate-x-1 transition-transform text-brand-accent font-bold">查看作品牆 ➔</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 專案 3：麻將無雙 2 -->
+                <div class="group bg-brand-card rounded-2xl border border-brand-dark/5 overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-accent/20 transition-all duration-300 flex flex-col cursor-pointer" onclick="openProject('wushuang')">
+                    <div class="h-56 bg-slate-900 relative flex items-center justify-center overflow-hidden">
+                        <img src="https://i.meee.com.tw/vrj9pIq.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="麻將無雙 2">
+                        <div class="absolute top-4 right-4 px-3 py-1 bg-brand-dark/80 backdrop-blur-md text-white rounded-lg text-xs font-semibold">
+                            SLOT 滾輪遊戲
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-3 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold group-hover:text-brand-accent transition-colors">麻將無雙 2 - 精緻 2D 老虎機</h3>
+                            <p class="text-brand-muted text-sm line-clamp-2 mt-1">
+                                全新升級 2000Way (4x5x5x5x4) 高端麻將老虎機。特色金龍特效直貫第三輪全面轉金、免費遊戲消去乘倍直接翻倍！
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-brand-dark/5 text-xs text-brand-muted font-semibold">
+                            <span>2D原畫設計 • 介面排版 • 規格輸出</span>
+                            <span class="group-hover:translate-x-1 transition-transform text-brand-accent font-bold">查看作品牆 ➔</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 專案 4：金色彩虹 -->
+                <div class="group bg-brand-card rounded-2xl border border-brand-dark/5 overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-accent/20 transition-all duration-300 flex flex-col cursor-pointer" onclick="openProject('rainbow')">
+                    <div class="h-56 bg-slate-900 relative flex items-center justify-center overflow-hidden">
+                        <img src="https://i.meee.com.tw/uHVyUyV.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="金色彩虹">
+                        <div class="absolute top-4 right-4 px-3 py-1 bg-brand-dark/80 backdrop-blur-md text-white rounded-lg text-xs font-semibold">
+                            SLOT 滾輪遊戲
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-3 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold group-hover:text-brand-accent transition-colors">金色彩虹 - 精緻 2D 老虎機</h3>
+                            <p class="text-brand-muted text-sm line-clamp-2 mt-1">
+                                以愛爾蘭精靈與彩虹金罐為背景的 3600Way 高階消除老虎機。特色為幸運金罐高額乘倍、金框圖騰轉 Wild、免費遊戲加成。
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-brand-dark/5 text-xs text-brand-muted font-semibold">
+                            <span>2D原畫設計 • 介面排版 • 規格輸出</span>
+                            <span class="group-hover:translate-x-1 transition-transform text-brand-accent font-bold">查看作品牆 ➔</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 專案 5：雷霆宙斯 -->
+                <div class="group bg-brand-card rounded-2xl border border-brand-dark/5 overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-accent/20 transition-all duration-300 flex flex-col cursor-pointer" onclick="openProject('zeus')">
+                    <div class="h-56 bg-slate-900 relative flex items-center justify-center overflow-hidden">
+                        <img src="https://i.meee.com.tw/Gs2jB8c.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="雷霆宙斯">
+                        <div class="absolute top-4 right-4 px-3 py-1 bg-brand-dark/80 backdrop-blur-md text-white rounded-lg text-xs font-semibold">
+                            SLOT 滾輪遊戲
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-3 flex-grow flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold group-hover:text-brand-accent transition-colors">雷霆宙斯 - 精緻 2D 老虎機</h3>
+                            <p class="text-brand-muted text-sm line-clamp-2 mt-1">
+                                以希臘主神宙斯為背景的 5x6 直向消除型高規老虎機。特色為隨機雷擊降臨乘倍寶珠、高達 500x 的加成威力，以及保留倍率的累積型免費遊戲。
+                            </p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-brand-dark/5 text-xs text-brand-muted font-semibold">
+                            <span>2D原畫設計 • 介面排版 • 規格輸出</span>
+                            <span class="group-hover:translate-x-1 transition-transform text-brand-accent font-bold">查看作品牆 ➔</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 2. 個人履歷 (ABOUT) ==================== -->
+        <section id="section-about" class="hidden space-y-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                
+                <!-- 左欄：個人簡介與聯絡資訊 -->
+                <div class="space-y-8 md:col-span-1">
+                    <div class="space-y-4 text-center md:text-left">
+                        <!-- 大頭貼 (SVG 代替) -->
+                        <div class="w-32 h-32 mx-auto md:mx-0 rounded-full bg-brand-accent/10 border-2 border-brand-accent flex items-center justify-center overflow-hidden">
+                            <svg class="w-20 h-20 text-brand-accent" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12c0 2.76 1.15 5.252 3.007 7.037C7.307 17.653 10.024 16.5 12 16.5c1.976 0 4.693 1.153 6.685 2.597zM12 13.5a4.5 4.5 0 100-9 4.5 4.5 0 000 9z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-black">邱雅婷</h2>
+                            <p class="text-brand-accent font-semibold text-sm">資深 2D 美術設計師 & 原畫師</p>
+                        </div>
+                        <p class="text-brand-muted text-sm leading-relaxed">
+                            專攻博弈、棋牌與娛樂城產品視覺，擁有 <strong>10 年</strong> 遊戲產業美術開發經歷。擅長 2D 角色原畫、插畫表現、高質感 Slots 盤面 UI 及符號設計。秉持「純2D手繪匠人精神」，同時運用 Blender 進行精準透視與構圖輔助，兼顧美學與高效率產出。
+                        </p>
+                    </div>
+
+                    <!-- 聯絡資訊 -->
+                    <div class="bg-brand-card p-6 rounded-2xl border border-brand-dark/5 space-y-4 text-sm">
+                        <h4 class="font-bold border-b border-brand-dark/5 pb-2">聯絡方式 Contact</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <span class="w-6 h-6 rounded bg-brand-bg flex items-center justify-center text-xs">✉️</span>
+                                <span class="text-brand-muted">cocopapa8989@gmail.com</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="w-6 h-6 rounded bg-brand-bg flex items-center justify-center text-xs">📞</span>
+                                <span class="text-brand-muted">0906-299-279</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="w-6 h-6 rounded bg-brand-bg flex items-center justify-center text-xs">🔗</span>
+                                <a href="#" class="text-brand-accent hover:underline">behance.net/letty_2d_art</a>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="w-6 h-6 rounded bg-brand-bg flex items-center justify-center text-xs">📍</span>
+                                <span class="text-brand-muted">台灣台北 / 雙北地區 / Remote OK</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 專業技能標籤 -->
+                    <div class="space-y-3">
+                        <h4 class="font-bold text-sm uppercase tracking-wider text-brand-dark">專業領域 Skills</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 bg-brand-card border border-brand-dark/5 rounded-lg text-xs font-medium">2D 遊戲原畫師</span>
+                            <span class="px-3 py-1.5 bg-brand-card border border-brand-dark/5 rounded-lg text-xs font-medium">Slots 老虎機視覺包裝</span>
+                            <span class="px-3 py-1.5 bg-brand-card border border-brand-dark/5 rounded-lg text-xs font-medium">棋牌/麻將 UI 與符號手繪</span>
+                            <span class="px-3 py-1.5 bg-brand-card border border-brand-dark/5 rounded-lg text-xs font-medium">寫實/Q版多風格插畫</span>
+                            <span class="px-3 py-1.5 bg-brand-card border border-brand-dark/5 rounded-lg text-xs font-medium">Blender 3D 空間輔助</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右欄：掌握軟體與工作經歷 (時間軸) -->
+                <div class="md:col-span-2 space-y-12">
+                    <!-- 軟體技能 -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold border-b border-brand-dark/5 pb-2">專業工具 Tools</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <!-- PS -->
+                            <div class="bg-brand-card p-4 rounded-xl border border-brand-dark/5 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-[#001E36] text-[#00C8FF] font-black flex items-center justify-center text-lg">Ps</div>
+                                <div>
+                                    <div class="font-bold text-sm">Photoshop</div>
+                                    <div class="text-xs text-brand-muted">2D原畫/厚塗插畫</div>
+                                </div>
+                            </div>
+                            <!-- AI -->
+                            <div class="bg-brand-card p-4 rounded-xl border border-brand-dark/5 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-[#330000] text-[#FF9A00] font-black flex items-center justify-center text-lg">Ai</div>
+                                <div>
+                                    <div class="font-bold text-sm">Illustrator</div>
+                                    <div class="text-xs text-brand-muted">向量設計/UI元件</div>
+                                </div>
+                            </div>
+                            <!-- Blender -->
+                            <div class="bg-brand-card p-4 rounded-xl border border-brand-dark/5 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-[#EA7625]/10 text-[#EA7625] font-black flex items-center justify-center text-lg">Bl</div>
+                                <div>
+                                    <div class="font-bold text-sm">Blender</div>
+                                    <div class="text-xs text-brand-muted">3D 空間/透視輔助繪圖</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 職涯經歷 -->
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-bold border-b border-brand-dark/5 pb-2">工作經歷 Experience (10年資歷)</h3>
+                        
+                        <div class="relative border-l border-brand-dark/10 pl-6 ml-3 space-y-8">
+                            
+                            <!-- 經歷 1：永宙數位 -->
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-brand-accent border-4 border-brand-bg"></div>
+                                <div class="space-y-2">
+                                    <div class="flex items-center justify-between flex-wrap gap-2">
+                                        <h4 class="font-extrabold text-base md:text-lg">資深美術</h4>
+                                        <span class="px-2.5 py-1 bg-brand-accent/10 text-brand-accent text-xs font-semibold rounded-lg">2022/03 - 2026/06 (4年3個月)</span>
+                                    </div>
+                                    <div class="text-sm font-semibold text-brand-muted flex flex-wrap gap-x-3 items-center">
+                                        <span>永宙數位科技有限公司</span>
+                                        <span class="text-xs px-2 py-0.5 bg-brand-dark/5 rounded">電腦軟體服務業 (1-30人)</span>
+                                        <span class="text-xs text-brand-accent">📍 台北市中正區</span>
+                                    </div>
+                                    <p class="text-xs font-semibold text-brand-accent/80">#Adobe Photoshop #Illustrator #電腦繪圖軟體操作 #繪圖工具與軟體操作</p>
+                                    <ul class="text-xs text-brand-muted list-disc pl-4 space-y-1 pt-1 leading-relaxed">
+                                        <li>主導並開發高水準的博弈遊戲 2D 視覺風格，建構標準化美術資產流程。</li>
+                                        <li>負責 Slots、棋牌產品的完整 UI 盤面渲染、手繪圖標與高品質符號設計。</li>
+                                        <li>指導與評審內部美術產出，確保設計與產品概念保持高度一致性。</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- 經歷 2：星元資訊 -->
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-brand-dark border-4 border-brand-bg"></div>
+                                <div class="space-y-2">
+                                    <div class="flex items-center justify-between flex-wrap gap-2">
+                                        <h4 class="font-extrabold text-base md:text-lg">原畫師</h4>
+                                        <span class="px-2.5 py-1 bg-brand-dark/10 text-brand-dark text-xs font-semibold rounded-lg">2021/04 - 2022/01 (10個月)</span>
+                                    </div>
+                                    <div class="text-sm font-semibold text-brand-muted flex flex-wrap gap-x-3 items-center">
+                                        <span>星元資訊有限公司</span>
+                                        <span class="text-xs px-2 py-0.5 bg-brand-dark/5 rounded">30-100人</span>
+                                        <span class="text-xs text-brand-accent">📍 台北市信義區</span>
+                                    </div>
+                                    <ul class="text-xs text-brand-muted list-disc pl-4 space-y-1 pt-1 leading-relaxed">
+                                        <li>專職遊戲角色與場景概念原畫（Concept Art）設計，奠定新遊戲的世界觀基調。</li>
+                                        <li>精細手繪高品質主視覺宣傳海報，提供行銷端極具吸睛度的美術素材。</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- 經歷 3：英商引達取 -->
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-brand-dark border-4 border-brand-bg"></div>
+                                <div class="space-y-2">
+                                    <div class="flex items-center justify-between flex-wrap gap-2">
+                                        <h4 class="font-extrabold text-base md:text-lg">2D美術設計</h4>
+                                        <span class="px-2.5 py-1 bg-brand-dark/10 text-brand-dark text-xs font-semibold rounded-lg">2020/12 - 2021/04 (5個月)</span>
+                                    </div>
+                                    <div class="text-sm font-semibold text-brand-muted flex flex-wrap gap-x-3 items-center">
+                                        <span>英商引達取有限公司台灣分公司</span>
+                                        <span class="text-xs px-2 py-0.5 bg-brand-dark/5 rounded">網際網路相關業 (30-100人)</span>
+                                        <span class="text-xs text-brand-accent">📍 台北市大同區</span>
+                                    </div>
+                                    <p class="text-xs font-semibold text-brand-accent/80">#Illustrator #Adobe Photoshop #電腦繪圖軟體操作</p>
+                                    <ul class="text-xs text-brand-muted list-disc pl-4 space-y-1 pt-1 leading-relaxed">
+                                        <li>負責網頁端、行動端棋牌平台的 2D 視覺元件、版面細節插畫包裝。</li>
+                                        <li>與跨國產品團隊密切协作，依照地區文化及偏好微調角色原畫設定。</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- 經歷 4：泰偉電子 -->
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-brand-dark border-4 border-brand-bg"></div>
+                                <div class="space-y-2">
+                                    <div class="flex items-center justify-between flex-wrap gap-2">
+                                        <h4 class="font-extrabold text-base md:text-lg">2D美術設計</h4>
+                                        <span class="px-2.5 py-1 bg-brand-dark/10 text-brand-dark text-xs font-semibold rounded-lg">2018/02 - 2020/10 (2年9個月)</span>
+                                    </div>
+                                    <div class="text-sm font-semibold text-brand-muted flex flex-wrap gap-x-3 items-center">
+                                        <span>泰偉電子股份有限公司</span>
+                                        <span class="text-xs px-2 py-0.5 bg-brand-dark/5 rounded">上市公司 (100-500人)</span>
+                                        <span class="text-xs text-brand-accent">📍 新北市三重區</span>
+                                    </div>
+                                    <p class="text-xs font-semibold text-brand-accent/80">#Adobe Photoshop #Illustrator #使用者介面設計 #插畫表現技巧 #設計表現能力</p>
+                                    <ul class="text-xs text-brand-muted list-disc pl-4 space-y-1 pt-1 leading-relaxed">
+                                        <li>參與多款大型實體電子遊戲機台與線上娛樂城（Igs/Slots）的盤面、轉輪與UI設計。</li>
+                                        <li>發揮厚實的插畫技巧，獨立繪製精緻的符號、大獎特效過場（Big Win）靜態底圖。</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- 經歷 5：傳奇網路遊戲 -->
+                            <div class="relative">
+                                <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-brand-dark border-4 border-brand-bg"></div>
+                                <div class="space-y-2">
+                                    <div class="flex items-center justify-between flex-wrap gap-2">
+                                        <h4 class="font-extrabold text-base md:text-lg">2D美術</h4>
+                                        <span class="px-2.5 py-1 bg-brand-dark/10 text-brand-dark text-xs font-semibold rounded-lg">2015/11 - 2017/12 (2年2個月)</span>
+                                    </div>
+                                    <div class="text-sm font-semibold text-brand-muted flex flex-wrap gap-x-3 items-center">
+                                        <span>傳奇網路遊戲股份有限公司</span>
+                                        <span class="text-xs px-2 py-0.5 bg-brand-dark/5 rounded">專門設計/遊戲研發相關業 (100-500人)</span>
+                                        <span class="text-xs text-brand-accent">📍 台北市松山區</span>
+                                    </div>
+                                    <ul class="text-xs text-brand-muted list-disc pl-4 space-y-1 pt-1 leading-relaxed">
+                                        <li>負責知名 MMORPG 端遊/手遊的角色插畫、怪獸設定與道具圖示精細手繪。</li>
+                                        <li>在高度講求日系奇幻、Q版精緻渲染的美術標準下，打下紮實的 2D 基本功。</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 底部資訊 -->
+    <footer class="border-t border-brand-dark/5 py-12 px-6 bg-brand-card text-center text-xs text-brand-muted mt-24">
+        <div class="max-w-6xl mx-auto space-y-4">
+            <p class="font-extrabold uppercase tracking-widest text-brand-dark">UNIQ STUDIO — GAMING DESIGN</p>
+            <p>© 2026 邱雅婷. All Rights Reserved. Built with minimalist aesthetics.</p>
+        </div>
+    </footer>
+
+    <!-- ==================== 3. 專案詳情燈箱彈窗 (MODAL) ==================== -->
+    <div id="project-modal" class="fixed inset-0 z-50 bg-brand-dark/60 backdrop-blur-sm flex items-center justify-center p-4 md:p-8 hidden">
+        <!-- 彈窗本體 -->
+        <div class="bg-brand-bg w-full max-w-4xl h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col relative transform scale-95 opacity-0 transition-all duration-300" id="modal-container">
+            <!-- 關閉按鈕 -->
+            <button onclick="closeProject()" class="absolute top-4 right-4 z-10 w-10 h-10 bg-brand-dark/80 hover:bg-brand-accent text-white rounded-full flex items-center justify-center font-bold text-lg transition-colors">
+                ✕
+            </button>
+
+            <!-- 滾動內容 -->
+            <div class="overflow-y-auto h-full p-6 md:p-10 space-y-10 no-scrollbar">
+                
+                <!-- ==================== 極地探險作品展示區 ==================== -->
+                <div id="detail-polar" class="hidden space-y-8">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-brand-dark/5">
+                        <div class="space-y-2">
+                            <span class="px-2.5 py-1 bg-teal-500/10 text-teal-600 text-xs font-semibold rounded-lg uppercase">Slots 老虎機專案</span>
+                            <h2 class="text-3xl md:text-5xl font-black tracking-tight">極地探險 <span class="text-brand-accent">Polar Slot</span></h2>
+                        </div>
+                        <div class="bg-amber-50 border border-amber-200/50 p-4 rounded-xl max-w-md text-xs text-amber-900 leading-relaxed">
+                            <strong>💡 核心玩法規則一覽：</strong>
+                            <p class="mt-1">
+                                5x5 消除玩法，相同圖標相連達 6 個以上即中獎。中獎區域會進行「挖掘」消除底板。挖出特殊獎勵（獎金、百搭、石板碎片），集滿 3 個石板碎片即可觸發「免費遊戲」，挖開高額大寶箱！
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-sm tracking-wider text-brand-dark">設計手稿與介面展示 GRID CASE STUDY</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" id="polar-grid-container">
+                            <!-- JS將會自動生成 12 張高品質縮圖卡片 -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== 東風麻將作品展示區 ==================== -->
+                <div id="detail-mahjong" class="hidden space-y-8">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-brand-dark/5">
+                        <div class="space-y-2">
+                            <span class="px-2.5 py-1 bg-rose-500/10 text-rose-600 text-xs font-semibold rounded-lg uppercase">Slots 老虎機專案</span>
+                            <h2 class="text-3xl md:text-5xl font-black tracking-tight">東風麻將 <span class="text-brand-accent">East Wind</span></h2>
+                        </div>
+                        <div class="bg-amber-50 border border-amber-200/50 p-4 rounded-xl max-w-md text-xs text-amber-900 leading-relaxed">
+                            <strong>💡 核心玩法規則一覽：</strong>
+                            <p class="mt-1">
+                                4x5 轉輪消除。相鄰轉輪出現相同麻將 3 個以上即中獎消去，消去乘倍依次為 x1、x2、x3、x5。金色麻將消去轉為百搭。集滿 3 個「風位骰」（Scatter）觸發 12 回免費遊戲，轉動骰子可加成或乘算倍率！
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-sm tracking-wider text-brand-dark">設計手稿與介面展示 GRID CASE STUDY</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" id="mahjong-grid-container">
+                            <!-- JS將會自動生成 15 張高品質縮圖卡片 -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== 麻將無雙2作品展示區 ==================== -->
+                <div id="detail-wushuang" class="hidden space-y-8">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-brand-dark/5">
+                        <div class="space-y-2">
+                            <span class="px-2.5 py-1 bg-amber-500/10 text-amber-600 text-xs font-semibold rounded-lg uppercase">Slots 老虎機專案</span>
+                            <h2 class="text-3xl md:text-5xl font-black tracking-tight">麻將無雙 2 <span class="text-brand-accent">Mahjong Ways 2</span></h2>
+                        </div>
+                        <div class="bg-amber-50 border border-amber-200/50 p-4 rounded-xl max-w-md text-xs text-amber-900 leading-relaxed">
+                            <strong>💡 核心玩法規則一覽：</strong>
+                            <p class="mt-1">
+                                4x5x5x5x4 的 2000Way 消除老虎機。特色金龍特效橫掃第三輪將圖騰轉為純金，免費遊戲消去乘倍強勢翻倍，達到 x2、x4、x6、x10！多重連消大獎層層疊加。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-sm tracking-wider text-brand-dark">設計手稿與介面展示 GRID CASE STUDY</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" id="wushuang-grid-container">
+                            <!-- JS將會自動生成 12 張高品質縮圖卡片 -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== 金色彩虹作品展示區 ==================== -->
+                <div id="detail-rainbow" class="hidden space-y-8">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-brand-dark/5">
+                        <div class="space-y-2">
+                            <span class="px-2.5 py-1 bg-emerald-500/10 text-emerald-600 text-xs font-semibold rounded-lg uppercase">Slots 老虎機專案</span>
+                            <h2 class="text-3xl md:text-5xl font-black tracking-tight">金色彩虹 <span class="text-brand-accent">Golden Rainbow</span></h2>
+                        </div>
+                        <div class="bg-amber-50 border border-amber-200/50 p-4 rounded-xl max-w-md text-xs text-amber-900 leading-relaxed">
+                            <strong>💡 核心玩法規則一覽：</strong>
+                            <p class="mt-1">
+                                特殊 3x4x5x5x4x3 輪盤消除 (3600Way)。上方彩虹「幸運金罐」逐次遞增乘倍（最高1024x），中獎消除金框轉 Wild 輔助，收集 3 個 Scatter 進入免費遊戲，乘倍從 8x 起步並支援無限重複觸發！
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-sm tracking-wider text-brand-dark">設計手稿與介面展示 GRID CASE STUDY</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" id="rainbow-grid-container">
+                            <!-- JS將會自動生成 14 張高品質縮圖卡片 -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== 雷霆宙斯作品展示區 ==================== -->
+                <div id="detail-zeus" class="hidden space-y-8">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-brand-dark/5">
+                        <div class="space-y-2">
+                            <span class="px-2.5 py-1 bg-indigo-500/10 text-indigo-600 text-xs font-semibold rounded-lg uppercase">Slots 老虎機專案</span>
+                            <h2 class="text-3xl md:text-5xl font-black tracking-tight">雷霆宙斯 <span class="text-brand-accent">Raging Zeus</span></h2>
+                        </div>
+                        <div class="bg-amber-50 border border-amber-200/50 p-4 rounded-xl max-w-md text-xs text-amber-900 leading-relaxed">
+                            <strong>💡 核心玩法規則一覽：</strong>
+                            <p class="mt-1">
+                                5x6 直向消除玩法，畫面出現 8 個以上相同圖騰即中獎消去並落下遞補。乘倍大寶石隨機降臨，宙斯舉起閃電召喚雷擊賦予高達 500x 的倍率！免費遊戲內乘倍可疊加且不限上限，支援百倍押分購買特色觸發！
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-sm tracking-wider text-brand-dark">設計手稿與介面展示 GRID CASE STUDY</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4" id="zeus-grid-container">
+                            <!-- JS將會自動生成 18 張高品質縮圖卡片 -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== 4. 全螢幕高清放映室燈箱 (LIGHTBOX) ==================== -->
+    <div id="lightbox-modal" class="fixed inset-0 z-[60] bg-brand-dark/95 backdrop-blur-md flex flex-col items-center justify-center p-4 hidden">
+        <!-- 關閉按鈕 -->
+        <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white hover:text-brand-accent text-3xl font-bold p-2 transition-colors z-[70] focus:outline-none">
+            ✕
+        </button>
+
+        <!-- 導航：上一張 -->
+        <button onclick="prevLightbox()" class="absolute left-2 md:left-6 text-white/50 hover:text-white text-4xl md:text-6xl font-bold p-4 select-none transition-colors z-50 focus:outline-none">
+            ❮
+        </button>
+
+        <!-- 導航：下一張 -->
+        <button onclick="nextLightbox()" class="absolute right-2 md:right-6 text-white/50 hover:text-white text-4xl md:text-6xl font-bold p-4 select-none transition-colors z-50 focus:outline-none">
+            ❯
+        </button>
+
+        <!-- 圖片內容載入區 -->
+        <div class="max-w-4xl max-h-[85vh] flex flex-col items-center justify-center relative select-none">
+            <img id="lightbox-img" class="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl border border-white/10" src="" alt="手稿完稿" onerror="this.src='https://placehold.co/800x600/1a1a1a/cccccc?text=Image+Loading'">
+            <!-- 高清圖標題 -->
+            <p id="lightbox-title" class="text-white text-lg font-black mt-4 tracking-wider uppercase"></p>
+            <!-- 頁碼計數 -->
+            <span id="lightbox-counter" class="text-white/40 text-xs mt-1"></span>
+        </div>
+    </div>
+
+
+    <!-- ==================== 5. JAVASCRIPT 邏輯區 ==================== -->
+    <script>
+        // 極地探險圖片庫 (12張)
+        const polarImages = [
+            { src: "https://i.meee.com.tw/KBWPigX.jpg", title: "01 | Loading" },
+            { src: "https://i.meee.com.tw/9LgryBS.jpg", title: "02 | Base Game" },
+            { src: "https://i.meee.com.tw/Gztclvv.jpg", title: "03 | Free Spins Game" },
+            { src: "https://i.meee.com.tw/ILgDQdG.jpg", title: "04 | Win Display" },
+            { src: "https://i.meee.com.tw/iRLd4MH.jpg", title: "05 | Treasure Chest" },
+            { src: "https://i.meee.com.tw/i8cWF0M.jpg", title: "06 | Popup" },
+            { src: "https://i.meee.com.tw/zhQCPp3.jpg", title: "07 | Popup" },
+            { src: "https://i.meee.com.tw/I5iDDdA.jpg", title: "08 | Big Win" },
+            { src: "https://i.meee.com.tw/vbiQLO3.jpg", title: "09 | Mega Win" },
+            { src: "https://i.meee.com.tw/V54fmZF.jpg", title: "10 | Super Win" },
+            { src: "https://i.meee.com.tw/J7cueFw.jpg", title: "11 | bg" },
+            { src: "https://i.meee.com.tw/mHofNrL.jpg", title: "12 | fg" }
+        ];
+
+        // 東風麻將圖片庫 (15張)
+        const mahjongImages = [
+            { src: "https://i.meee.com.tw/Z5g68Oq.jpg", title: "01 | Loading" },
+            { src: "https://i.meee.com.tw/eC6J9Ki.jpg", title: "02 | Title Screen" },
+            { src: "https://i.meee.com.tw/vfBKlT8.jpg", title: "03 | Base Game" },
+            { src: "https://i.meee.com.tw/HRQ4Pia.jpg", title: "04 | Free Spins Game" },
+            { src: "https://i.meee.com.tw/3K21OMC.jpg", title: "05 | Popup" },
+            { src: "https://i.meee.com.tw/qz5IgO9.jpg", title: "06 | Popup" },
+            { src: "https://i.meee.com.tw/0pC3Sr1.jpg", title: "07 | Wind dice" },
+            { src: "https://i.meee.com.tw/keVKgGy.jpg", title: "08 | Buy Feature" },
+            { src: "https://i.meee.com.tw/0J85u48.jpg", title: "09 | Odss" },
+            { src: "https://i.meee.com.tw/fUhWSbs.jpg", title: "10 | Big Win" },
+            { src: "https://i.meee.com.tw/7MDmexN.jpg", title: "11 | Mega Win" },
+            { src: "https://i.meee.com.tw/FDk1rq0.jpg", title: "12 | Super Win" },
+            { src: "https://i.meee.com.tw/Tfx0UCn.jpg", title: "13 | ULTRA Win" },
+            { src: "https://i.meee.com.tw/i3R55js.jpg", title: "14 | LEGEND Win" },
+            { src: "https://i.meee.com.tw/59SeGng.jpg", title: "15 | LOGO" }
+        ];
+
+        // 麻將無雙2圖片庫 (12張)
+        const wushuangImages = [
+            { src: "https://i.meee.com.tw/v7eFdXg.jpg", title: "01 | Loading" },
+            { src: "https://i.meee.com.tw/ZvzUQCl.jpg", title: "02 | Title Screen" },
+            { src: "https://i.meee.com.tw/vrj9pIq.jpg", title: "03 | Base Game" },
+            { src: "https://i.meee.com.tw/C9jpznY.jpg", title: "04 | Free Spins Game" },
+            { src: "https://i.meee.com.tw/49EJ7iW.jpg", title: "05 | Odss" },
+            { src: "https://i.meee.com.tw/2zq6Fmc.jpg", title: "06 | Popup" },
+            { src: "https://i.meee.com.tw/Meqmsxt.jpg", title: "07 | Popup" },
+            { src: "https://i.meee.com.tw/BAWE8fl.jpg", title: "08 | FS_Remaining" },
+            { src: "https://i.meee.com.tw/UdcjzNK.jpg", title: "09 | Big Win" },
+            { src: "https://i.meee.com.tw/FcJtUnh.jpg", title: "10 | Mega Win" },
+            { src: "https://i.meee.com.tw/wirrtnE.jpg", title: "11 | Super Win" },
+            { src: "https://i.meee.com.tw/vev7eKk.jpg", title: "12 | LOGO" }
+        ];
+
+        // 金色彩虹圖片庫 (14張)
+        const rainbowImages = [
+            { src: "https://i.meee.com.tw/Bea3rcH.jpg", title: "01 | Loading" },
+            { src: "https://i.meee.com.tw/uHVyUyV.jpg", title: "02 | Base Game" },
+            { src: "https://i.meee.com.tw/hLk4DOD.jpg", title: "03 | Free Spins Game" },
+            { src: "https://i.meee.com.tw/cwaLTCL.jpg", title: "04 | Win Display" },
+            { src: "https://i.meee.com.tw/GnhrRrT.jpg", title: "05 | Odss" },
+            { src: "https://i.meee.com.tw/TkCfgVC.jpg", title: "06 | Popup" },
+            { src: "https://i.meee.com.tw/7PCOG8m.jpg", title: "07 | Popup" },
+            { src: "https://i.meee.com.tw/ZLn7JZp.jpg", title: "08 | Big Win" },
+            { src: "https://i.meee.com.tw/FLQpV0k.jpg", title: "09 | Mega Win" },
+            { src: "https://i.meee.com.tw/PX5yYAk.jpg", title: "10 | Super Win" },
+            { src: "https://i.meee.com.tw/PTwFrgk.jpg", title: "11 | BG" },
+            { src: "https://i.meee.com.tw/J6BUDWT.jpg", title: "12 | FG" },
+            { src: "https://i.meee.com.tw/A9WWYkr.jpg", title: "13 | LOGO" },
+            { src: "https://i.meee.com.tw/GElO7y4.jpg", title: "14 | Character" }
+        ];
+
+        // 雷霆宙斯圖片庫 (18張)
+        const zeusImages = [
+            { src: "https://i.meee.com.tw/t5qh7Fi.jpg", title: "01 | Loading" },
+            { src: "https://i.meee.com.tw/Gs2jB8c.jpg", title: "02 | Base Game" },
+            { src: "https://i.meee.com.tw/mciaMYf.jpg", title: "03 | Free Spins Game" },
+            { src: "https://i.meee.com.tw/IbCsitb.jpg", title: "04 | Win Display" },
+            { src: "https://i.meee.com.tw/5dc2DbO.jpg", title: "05 | Odss" },
+            { src: "https://i.meee.com.tw/5yRLcBA.jpg", title: "06 | Buy Free game" },
+            { src: "https://i.meee.com.tw/tsuaxxL.jpg", title: "07 | Popup" },
+            { src: "https://i.meee.com.tw/07KWScA.jpg", title: "08 | Popup" },
+            { src: "https://i.meee.com.tw/CY5nhlx.jpg", title: "09 | Big Win" },
+            { src: "https://i.meee.com.tw/SgnDO0e.jpg", title: "10 | Mega Win" },
+            { src: "https://i.meee.com.tw/nUUkkE9.jpg", title: "11 | Super Win" },
+            { src: "https://i.meee.com.tw/hz2N73I.jpg", title: "12 | ULTRA Win" },
+            { src: "https://i.meee.com.tw/m5GnjZC.jpg", title: "13 | LEGEND Win" },
+            { src: "https://i.meee.com.tw/K6ZB4dk.jpg", title: "14 | BG" },
+            { src: "https://i.meee.com.tw/M3YcWXM.jpg", title: "15 | FG" },
+            { src: "https://i.meee.com.tw/a0nPDub.jpg", title: "16 | LOGO" },
+            { src: "https://i.meee.com.tw/oGDiOee.jpg", title: "17 | Character" },
+            { src: "https://i.meee.com.tw/VJphtVl.jpg", title: "18 | Character" }
+        ];
+
+        let currentProjectType = 'polar'; // 'polar'、'mahjong'、'wushuang'、'rainbow'、'zeus'
+        let currentImgIndex = 0;
+
+        // 初始化極地九宮格縮圖
+        function initPolarGrid() {
+            const grid = document.getElementById('polar-grid-container');
+            grid.innerHTML = ''; 
+
+            polarImages.forEach((img, index) => {
+                const card = document.createElement('div');
+                card.className = "group relative bg-brand-card rounded-xl border border-brand-dark/5 overflow-hidden shadow-sm hover:shadow-md hover:border-brand-accent/20 transition-all duration-300 cursor-pointer aspect-[3/4]";
+                card.setAttribute('onclick', `openLightbox('polar', ${index})`);
+                card.innerHTML = `
+                    <div class="w-full h-full relative overflow-hidden bg-brand-dark/5">
+                        <img src="${img.src}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="${img.title}" loading="lazy">
+                        <!-- 覆蓋光暈與標題 -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/0 to-brand-dark/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                            <span class="text-white text-xs font-bold tracking-wider">${img.title}</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // 初始化麻將九宮格縮圖
+        function initMahjongGrid() {
+            const grid = document.getElementById('mahjong-grid-container');
+            grid.innerHTML = '';
+
+            mahjongImages.forEach((img, index) => {
+                const card = document.createElement('div');
+                card.className = "group relative bg-brand-card rounded-xl border border-brand-dark/5 overflow-hidden shadow-sm hover:shadow-md hover:border-brand-accent/20 transition-all duration-300 cursor-pointer aspect-[3/4]";
+                card.setAttribute('onclick', `openLightbox('mahjong', ${index})`);
+                card.innerHTML = `
+                    <div class="w-full h-full relative overflow-hidden bg-brand-dark/5">
+                        <img src="${img.src}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="${img.title}" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/0 to-brand-dark/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                            <span class="text-white text-xs font-bold tracking-wider">${img.title}</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // 初始化麻將無雙2九宮格縮圖
+        function initWushuangGrid() {
+            const grid = document.getElementById('wushuang-grid-container');
+            grid.innerHTML = '';
+
+            wushuangImages.forEach((img, index) => {
+                const card = document.createElement('div');
+                card.className = "group relative bg-brand-card rounded-xl border border-brand-dark/5 overflow-hidden shadow-sm hover:shadow-md hover:border-brand-accent/20 transition-all duration-300 cursor-pointer aspect-[3/4]";
+                card.setAttribute('onclick', `openLightbox('wushuang', ${index})`);
+                card.innerHTML = `
+                    <div class="w-full h-full relative overflow-hidden bg-brand-dark/5">
+                        <img src="${img.src}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="${img.title}" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/0 to-brand-dark/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                            <span class="text-white text-xs font-bold tracking-wider">${img.title}</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // 初始化金色彩虹九宮格縮圖
+        function initRainbowGrid() {
+            const grid = document.getElementById('rainbow-grid-container');
+            grid.innerHTML = '';
+
+            rainbowImages.forEach((img, index) => {
+                const card = document.createElement('div');
+                card.className = "group relative bg-brand-card rounded-xl border border-brand-dark/5 overflow-hidden shadow-sm hover:shadow-md hover:border-brand-accent/20 transition-all duration-300 cursor-pointer aspect-[3/4]";
+                card.setAttribute('onclick', `openLightbox('rainbow', ${index})`);
+                card.innerHTML = `
+                    <div class="w-full h-full relative overflow-hidden bg-brand-dark/5">
+                        <img src="${img.src}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="${img.title}" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/0 to-brand-dark/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                            <span class="text-white text-xs font-bold tracking-wider">${img.title}</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // 初始化雷霆宙斯九宮格縮圖
+        function initZeusGrid() {
+            const grid = document.getElementById('zeus-grid-container');
+            grid.innerHTML = '';
+
+            zeusImages.forEach((img, index) => {
+                const card = document.createElement('div');
+                card.className = "group relative bg-brand-card rounded-xl border border-brand-dark/5 overflow-hidden shadow-sm hover:shadow-md hover:border-brand-accent/20 transition-all duration-300 cursor-pointer aspect-[3/4]";
+                card.setAttribute('onclick', `openLightbox('zeus', ${index})`);
+                card.innerHTML = `
+                    <div class="w-full h-full relative overflow-hidden bg-brand-dark/5">
+                        <img src="${img.src}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="${img.title}" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/0 to-brand-dark/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                            <span class="text-white text-xs font-bold tracking-wider">${img.title}</span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // 當網頁載入時初始化全部九宮格
+        window.addEventListener('DOMContentLoaded', () => {
+            initPolarGrid();
+            initMahjongGrid();
+            initWushuangGrid();
+            initRainbowGrid();
+            initZeusGrid();
+        });
+
+        // 切換主頁面 Section (Work / About)
+        function showSection(sectionId) {
+            document.getElementById('section-work').classList.add('hidden');
+            document.getElementById('section-about').classList.add('hidden');
+            
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-brand-accent', 'border-b-2', 'border-brand-accent');
+                btn.classList.add('text-brand-muted');
+            });
+
+            document.getElementById('section-' + sectionId).classList.remove('hidden');
+
+            const activeBtn = document.getElementById('nav-' + sectionId);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-brand-muted');
+                activeBtn.classList.add('text-brand-accent', 'border-b-2', 'border-brand-accent');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 燈箱控制 (打開專案內頁)
+        function openProject(projectId) {
+            const modal = document.getElementById('project-modal');
+            const container = document.getElementById('modal-container');
+            const detailPolar = document.getElementById('detail-polar');
+            const detailMahjong = document.getElementById('detail-mahjong');
+            const detailWushuang = document.getElementById('detail-wushuang');
+            const detailRainbow = document.getElementById('detail-rainbow');
+            const detailZeus = document.getElementById('detail-zeus');
+
+            detailPolar.classList.add('hidden');
+            detailMahjong.classList.add('hidden');
+            detailWushuang.classList.add('hidden');
+            detailRainbow.classList.add('hidden');
+            detailZeus.classList.add('hidden');
+
+            if (projectId === 'polar') {
+                detailPolar.classList.remove('hidden');
+            } else if (projectId === 'mahjong') {
+                detailMahjong.classList.remove('hidden');
+            } else if (projectId === 'wushuang') {
+                detailWushuang.classList.remove('hidden');
+            } else if (projectId === 'rainbow') {
+                detailRainbow.classList.remove('hidden');
+            } else if (projectId === 'zeus') {
+                detailZeus.classList.remove('hidden');
+            }
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                container.classList.remove('scale-95', 'opacity-0');
+                container.classList.add('scale-100', 'opacity-100');
+            }, 10);
+            
+            document.body.classList.add('overflow-hidden');
+        }
+
+        // 關閉專案內頁
+        function closeProject() {
+            const modal = document.getElementById('project-modal');
+            const container = document.getElementById('modal-container');
+
+            container.classList.remove('scale-100', 'opacity-100');
+            container.classList.add('scale-95', 'opacity-0');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        // 點擊燈箱外部關閉
+        document.getElementById('project-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeProject();
+            }
+        });
+
+        // ==================== 全螢幕放映室 Lightbox 核心控制 ====================
+        function openLightbox(projectType, index) {
+            currentProjectType = projectType;
+            currentImgIndex = index;
+            const lightbox = document.getElementById('lightbox-modal');
+            updateLightboxContent();
+            lightbox.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox-modal').classList.add('hidden');
+            // 若大層專案 modal 是關閉的，才恢復滾動
+            if (document.getElementById('project-modal').classList.contains('hidden')) {
+                document.body.classList.remove('overflow-hidden');
+            }
+        }
+
+        function getImagesArray() {
+            if (currentProjectType === 'polar') {
+                return polarImages;
+            } else if (currentProjectType === 'mahjong') {
+                return mahjongImages;
+            } else if (currentProjectType === 'wushuang') {
+                return wushuangImages;
+            } else if (currentProjectType === 'rainbow') {
+                return rainbowImages;
+            } else {
+                return zeusImages;
+            }
+        }
+
+        function prevLightbox() {
+            const images = getImagesArray();
+            currentImgIndex = (currentImgIndex - 1 + images.length) % images.length;
+            updateLightboxContent();
+        }
+
+        function nextLightbox() {
+            const images = getImagesArray();
+            currentImgIndex = (currentImgIndex + 1) % images.length;
+            updateLightboxContent();
+        }
+
+        function updateLightboxContent() {
+            const imgElement = document.getElementById('lightbox-img');
+            const titleElement = document.getElementById('lightbox-title');
+            const counterElement = document.getElementById('lightbox-counter');
+            const images = getImagesArray();
+            
+            imgElement.src = images[currentImgIndex].src;
+            titleElement.innerText = images[currentImgIndex].title;
+            counterElement.innerText = `${currentImgIndex + 1} / ${images.length}`;
+        }
+
+        // 監聽鍵盤（左右翻頁與 ESC 關閉）
+        document.addEventListener('keydown', function(e) {
+            const lightbox = document.getElementById('lightbox-modal');
+            if (lightbox && !lightbox.classList.contains('hidden')) {
+                if (e.key === 'ArrowLeft') {
+                    prevLightbox();
+                } else if (e.key === 'ArrowRight') {
+                    nextLightbox();
+                } else if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
