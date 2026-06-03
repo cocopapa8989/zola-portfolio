@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="邱雅婷 (ZOLA Studio) 的 2D 博弈遊戲視覺設計與原畫作品集。專注於高端博弈遊戲、棋牌娛樂城、Slots 老虎機的 2D 視覺包裝、原畫與介面設計。">
     <title>ZOLA Studio | 2D博弈遊戲視覺設計 & 原畫作品集</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -43,7 +44,7 @@
     <header class="sticky top-0 z-40 bg-brand-bg/90 backdrop-blur-md border-b border-brand-dark/5 px-6 py-4 md:px-12">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <!-- Logo / 品牌名 -->
-            <a href="#" onclick="showSection('work')" class="group flex items-center gap-2">
+            <a href="javascript:void(0)" onclick="showSection('work')" class="group flex items-center gap-2">
                 <span class="w-8 h-8 rounded-full bg-brand-accent flex items-center justify-center text-white font-bold text-sm group-hover:scale-105 transition-transform">Z</span>
                 <span class="font-extrabold tracking-wider text-xl uppercase group-hover:text-brand-accent transition-colors">ZOLA STUDIO</span>
             </a>
@@ -535,9 +536,11 @@
                             <h2 class="text-2xl font-black">邱雅婷</h2>
                             <p class="text-brand-accent font-semibold text-sm mt-1">資深 2D 美術設計師 & 原畫師</p>
                         </div>
-                        <p class="text-brand-muted text-sm leading-relaxed">
-                            專攻博弈、棋牌與娛樂城產品視覺，擁有 <strong>10 年</strong> 遊戲產業美術開發經歷。擅長 2D 角色原畫、插畫表現、高質感 Slots 盤面 UI 及符號設計。秉持「純2D手繪匠人精神」，同時運用 Blender 進行精準透視與構圖輔助，兼顧美學與高效率產出。
-                        </p>
+                        <div class="text-brand-muted text-sm leading-relaxed space-y-3">
+                            <p>擁有 <strong>10 年</strong>遊戲美術開發經驗，專注於博弈、棋牌與娛樂城產品視覺設計。</p>
+                            <p>擅長 2D 角色原畫、商業插畫、Slots 盤面 UI、符號與介面風格整合。熟悉遊戲美術完整開發流程，兼顧視覺品質與商業化需求。</p>
+                            <p>並運用 Blender 輔助透視與構圖，提高畫面精準度與製作效率；持續學習並運用 AI 輔助工具於美術開發流程，提升視覺發想、風格延伸與製作效率。</p>
+                        </div>
                     </div>
 
                     <!-- 聯絡資訊 -->
@@ -926,7 +929,7 @@
                         <div class="bg-amber-50 border border-amber-200/50 p-4 rounded-xl max-w-md text-xs text-amber-900 leading-relaxed">
                             <strong>💡 核心玩法規則一覽：</strong>
                             <p class="mt-1">
-                                具有 3x5 轉輪、對獎規則為 30 線（30 Lines）方式之 Slot 遊戲。當轉輪停止轉動後，若畫面中出現 3、4 或 5 個以上相同之圖騰達成連線條件，即為中獎並獲取豐厚彩金回報！
+                                融合聖誕老人的驚喜送禮、冰雪麋鹿與璀璨聖誕樹等經典元素。採用經典的 3x5 滾輪與繽紛 30 線中獎方式。
                             </p>
                         </div>
                     </div>
@@ -1191,7 +1194,8 @@
 
         <!-- 圖片內容載入區 -->
         <div class="max-w-4xl max-h-[85vh] flex flex-col items-center justify-center relative select-none">
-            <img id="lightbox-img" class="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl border border-white/10" src="" alt="手稿完稿" onerror="this.src='https://placehold.co/800x600/1a1a1a/cccccc?text=Image+Loading'">
+            <!-- alt 屬性將會由 JS 動態替換為該圖片的標題 -->
+            <img id="lightbox-img" class="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl border border-white/10" src="" alt="作品展示" onerror="this.src='https://placehold.co/800x600/1a1a1a/cccccc?text=Image+Loading'">
             <!-- 高清圖標題 -->
             <p id="lightbox-title" class="text-white text-lg font-black mt-4 tracking-wider uppercase"></p>
             <!-- 頁碼計數 -->
@@ -1609,11 +1613,9 @@
             const modal = document.getElementById('project-modal');
             const container = document.getElementById('modal-container');
             
-            // 隱藏所有的專案明細
-            const details = ['polar', 'mahjong', 'wushuang', 'penguin', 'dragon', 'rainbow', 'zeus', 'beer', 'christmas', 'elmo', 'express', 'blackbeard', 'thor', 'gold', 'forest', 'mask', 'empress', 'plinko', 'scratch', 'other_ui'];
-            details.forEach(d => {
-                const target = document.getElementById('detail-' + d);
-                if (target) target.classList.add('hidden');
+            // 隱藏所有的專案明細 (改用自動抓取，未來新增專案不用手動改陣列了)
+            document.querySelectorAll('[id^="detail-"]').forEach(target => {
+                target.classList.add('hidden');
             });
 
             // 顯示當前點選專案
@@ -1712,6 +1714,7 @@
             const images = getImagesArray();
             
             imgElement.src = images[currentImgIndex].src;
+            imgElement.alt = images[currentImgIndex].title; // 動態更新 alt，對 SEO 與無障礙更好
             titleElement.innerText = images[currentImgIndex].title;
             counterElement.innerText = `${currentImgIndex + 1} / ${images.length}`;
         }
